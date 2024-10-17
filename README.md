@@ -17,7 +17,7 @@ MCXStudio/
 ```
 ## Installation instructions for iso2Mesh
 To generate the meshes you need to install the software iso2mesh. You can find it in the following repository: https://github.com/fangq/iso2mesh. You only need to download it or clone the repository in one folder on your disk.
-## post-installation operations
+## Post-installation operations
 1. Run the file ```mcxsuite_addpath.m``` to set the path of MMC and add the path of the ```iso2mesh``` installation. To add the path in MATLAB you can do one of the following steps:
    1. Add permanently to the MATLAB path through the **Set Path** button.
    2. Add the following lines on top of your scripts:
@@ -25,7 +25,7 @@ To generate the meshes you need to install the software iso2mesh. You can find i
       ISO2MESH_PATH = path_to_iso2mesh;
       addpath(genpath(ISO2MESH_PATH));
       ```
-## test the installation
+## Test the installation
 Run some example files in the folder ```MCXStudio/MATLAB/mmclab/example```, in particular:
 * ```demo_mmclab_basic.m```
 * ```demo_example_validation.m```
