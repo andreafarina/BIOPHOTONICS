@@ -7,7 +7,7 @@ You can download this software here: http://mcx.space.
 2. Select the folder with your platform: Windows, Linux, Apple.
 3. Download the package
    ```MCXStudio-[your platform]-nightlybuild.zip``` and extract it in a folder on your disk.
-5. If you download the Apple version you have to download also ```mmc-[your platform]-nightlybuild.zip``` and ```mmclab-[your platform]-nightlybuild.zip``` and copy the extracted folder so that to have the following folder tree:
+5. [for MAC user only] You have to download also ```mmc-[your platform]-nightlybuild.zip``` and ```mmclab-[your platform]-nightlybuild.zip``` and copy the extracted folder so that to have the following folder tree:
 ```
 MCXStudio/
   |-  MCXSuite/
@@ -18,7 +18,8 @@ MCXStudio/
 ## Installation instructions for iso2Mesh
 To generate the meshes you need to install the software iso2mesh. You can find it in the following repository: https://github.com/fangq/iso2mesh. You only need to download it or clone the repository in one folder on your disk.
 ## Post-installation operations
-1. Run the file ```mcxsuite_addpath.m``` to set the path of MMC and add the path of the ```iso2mesh``` installation. To add the path in MATLAB you can do one of the following steps:
+1. [for MAC user only] run MCXStudio/MAC_USER_PLEASE_RUN_THIS_FIRST.command.
+2. Run the file ```mcxsuite_addpath.m``` to set the path of MMC and add the path of the ```iso2mesh``` installation. To add the path in MATLAB you can do one of the following steps:
    1. Add permanently to the MATLAB path through the **Set Path** button.
    2. Add the following lines on top of your scripts:
       ```matlab
@@ -29,6 +30,7 @@ To generate the meshes you need to install the software iso2mesh. You can find i
 Run some example files in the folder ```MCXStudio/MATLAB/mmclab/example```, in particular:
 * ```demo_mmclab_basic.m```
 * ```demo_example_validation.m```
+* ```dem_example_reply.m```
 * ```demo_sfdi_2layer.m```
 
 Don't care about the output, just test if those examples run without error.
