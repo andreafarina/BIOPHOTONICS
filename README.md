@@ -17,6 +17,8 @@ MCXStudio/
 ```
 ## Installation instructions for iso2Mesh
 To generate the meshes you need to install the software iso2mesh. You can find it in the following repository: https://github.com/fangq/iso2mesh. You only need to download it or clone the repository in one folder on your disk.
+
+To download press the green button _Code_ and then _Download ZIP_.
 ## Post-installation operations
 1. [for MAC user only] run MCXStudio/MAC_USER_PLEASE_RUN_THIS_FIRST.sh.
 2. Run the file ```mcxsuite_addpath.m``` to set the path of MMC and add the path of the ```iso2mesh``` installation. To add the path in MATLAB you can do one of the following steps:
@@ -34,5 +36,7 @@ Run some example files in the folder ```MCXStudio/MATLAB/mmclab/example```, in p
 * ```demo_sfdi_2layer.m```
 
 Don't care about the output, just test if those examples run without error.
+  
+[for MAC user only] the first time you run you may receive an alert that the software is blocked because downloaded from internet. Go in _Settings-->Privace&Security_ and allow the execution. 
 
 
