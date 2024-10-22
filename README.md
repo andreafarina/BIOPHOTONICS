@@ -23,11 +23,8 @@ To download press the green button _Code_ and then _Download ZIP_.
 1. [for MAC user only] run MCXStudio/MAC_USER_PLEASE_RUN_THIS_FIRST.sh.
 2. Run the file ```mcxsuite_addpath.m``` to set the path of MMC and add the path of the ```iso2mesh``` installation. To add the path in MATLAB you can do one of the following steps:
    1. Add permanently to the MATLAB path through the **Set Path** button.
-   2. Add the following lines on top of your scripts:
-      ```matlab
-      ISO2MESH_PATH = path_to_iso2mesh;
-      addpath(genpath(ISO2MESH_PATH));
-      ```
+   2. Run the script ```\Code\MMC_path.m ``` at the beginning of the session. Please change the variables MCXSTUDIO_PATH and ISO2MESH_PATH accordingly to your path.
+      
 ## Test the installation
 Run some example files in the folder ```MCXStudio/MATLAB/mmclab/example```, in particular:
 * ```demo_mmclab_basic.m```
