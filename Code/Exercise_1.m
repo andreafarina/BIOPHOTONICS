@@ -27,7 +27,7 @@ p1 = [30, 30, 30];
 %% 3. Set and run the simulation
 % optical properties
 mua = 0.01;             % absorption coefficient [mm-1]
-mus = 1.0              % scattering coefficient [mm-1]
+mus = 1.0;              % scattering coefficient [mm-1]
 g = 0.0;                  % anisotropy factor
 n = 1.4;                % refractive index
 musp = mus * (1 - g);   % reduced scattering coefficient [mm-1]
