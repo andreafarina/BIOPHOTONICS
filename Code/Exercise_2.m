@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Exercise 2
 % 1. Generate a parallelepiped mesh
 % 2. Plot the mesh.
@@ -42,8 +42,8 @@ cfg.srcdir = [0 0 1];
 % xd,yd,zd. You can set more than one detector. Each row of cfg.detpos
 % corresponds to a detector.
 rad = 2;            
-cfg.detpos = [xd, yd1, zd1, rad;
-               xd2, yd2, zd2, rad;];
+cfg.detpos = [20, 0, 0, rad];
+              % xd2, yd2, zd2, rad;];
                
 % set the temporal data
 cfg.tstart = 0;
@@ -60,7 +60,12 @@ cfg.elemprop = ones(length(elem),1);
 
 %% construct the TPSF from photon data and compare it with diffusion approximation
 % calculate weights
-
+mua = 0.01;
+w = exp(-mua * detp.ppath);
+dt = 10; % ps
+tgrid = (cfg.tstart*1e12:dt:cfg.tend*1e12); %in ps
+c0 = 0.3;   %mm/ps
+[tpsf,newtime] = HistogramTPSF(w,tgrid,detp.ppath,c0,n);
 % bin to generate the photon time-of-flight histogram
 % Implement the function HistogramTPSF.m
 % hint: use histcounts and accumarray functions
@@ -71,5 +76,3 @@ cfg.elemprop = ones(length(elem),1);
 
 % Compare with the Diffusion Approximation
 % Implement the function SemiInfinite_TR.m
-
-

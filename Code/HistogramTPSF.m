@@ -11,8 +11,9 @@ function [tpsf,newtime] = HistogramTPSF(w,time,path,c0,n)
 %        tpsf:  tpsf value at each time bin
 %        ntime: new temporal points calculated as average time for each bin
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ptime = path/c0 * n;
+[nbin,~,bins] = histcounts(ptime,time);
+tpsf = accumarray(bins,w);
 
-
-tpsf = 
 newtime = time(1:end-1) + dt/2;
 end
