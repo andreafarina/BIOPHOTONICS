@@ -25,7 +25,7 @@ v =
 % isotropic source depth
 z0 = 1/mus;
 
-% diffusnio coefficient
+% diffusion coefficient
 D = 1/(3*mus);
 
 % extrapolated distance

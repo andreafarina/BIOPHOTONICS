@@ -12,8 +12,12 @@ function [tpsf,newtime] = HistogramTPSF(w,time,path,c0,n)
 %        ntime: new temporal points calculated as average time for each bin
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 ptime = path/c0 * n;
+dt = time(2) - time(1);
 [nbin,~,bins] = histcounts(ptime,time);
-tpsf = accumarray(bins,w);
+% By using simply tpsf = accumarray(bins,w) you lose the position of the time zero
+% if there are bis with zero counts. Use this:
+numbins = numel(time) - 1;
+tpsf = accumarray(bins,w,[numbins,1]);
 
 newtime = time(1:end-1) + dt/2;
 end

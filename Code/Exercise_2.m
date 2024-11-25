@@ -12,11 +12,11 @@ clearvars;
 close all;
 %% 1. Generate a piped mesh
 % corners of the mesh
-p0 = [-30, -30, 0];
-p1 = [30, 30, 50];
+p0 = [-30, -30, 0] * 2;
+p1 = [30, 30, 50] * 2;
 
 % generate the mesh
-[node, face, elem] = meshabox(p0, p1, 1);
+[node, face, elem] = meshabox(p0, p1, 100);
 
 %% 2. Set and run the simulation
 % optical properties
@@ -29,7 +29,7 @@ musp = mus * (1 - g);   % reduced scattering coefficient [mm-1]
 % set the cfg structure
 cfg.node = node;
 cfg.elem = elem;
-cfg.nphoton = 1e5;      % number of pohoton to lunch      
+cfg.nphoton = 1e6;      % number of pohoton to lunch      
 cfg.prop = [0,      0,      1,      1;      % external layer 
             mua,   mus,    g,       n];
 
@@ -65,14 +65,20 @@ w = exp(-mua * detp.ppath);
 dt = 10; % ps
 tgrid = (cfg.tstart*1e12:dt:cfg.tend*1e12); %in ps
 c0 = 0.3;   %mm/ps
-[tpsf,newtime] = HistogramTPSF(w,tgrid,detp.ppath,c0,n);
 % bin to generate the photon time-of-flight histogram
 % Implement the function HistogramTPSF.m
 % hint: use histcounts and accumarray functions
-
-% normalize
-
-% plot
-
+[tpsf,newtime] = HistogramTPSF(w,tgrid,detp.ppath,c0,n);
+% normalize: to get the dimensions in W/cm^2 /ps you have to divide
+% by the number of photon launched, by the detector surface, by dt
+Adet = pi * rad^2;
+tpsf = tpsf./(Adet*cfg.nphoton*dt);
+return;
 % Compare with the Diffusion Approximation
 % Implement the function SemiInfinite_TR.m
+%rho = 
+%Rifle = SemiInfinite_TR(time,rho,mua,musp,c0,n);
+%plot the two curves
+figure(6),semilogy(newtime,[tpsf,Rifle']),xlabel('time [ps]'), ylabel('fluence rate [1/(mm^2 * ps)]'),
+ylim(max(Rifle(:)) * [1e-4 1.1])
+
