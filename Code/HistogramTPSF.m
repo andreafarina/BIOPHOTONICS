@@ -16,6 +16,10 @@ dt = time(2) - time(1);
 [nbin,~,bins] = histcounts(ptime,time);
 % By using simply tpsf = accumarray(bins,w) you lose the position of the time zero
 % if there are bis with zero counts. Use this:
+if ~all(bins)
+    w(bins==0) = [];
+    bins(bins==0) = [];
+end
 numbins = numel(time) - 1;
 tpsf = accumarray(bins,w,[numbins,1]);
 

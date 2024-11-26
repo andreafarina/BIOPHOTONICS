@@ -20,18 +20,22 @@ else
     A = 504.332889-2641.00214*n_rel+5923.699064*n_rel^2-7376.355814*n_rel^3+5507.53041*n_rel^4-2463.357945*n_rel^5+610.956547*n_rel^6-64.8047*n_rel^7;
 end
 %%
-v =  
+v = c/n;
 
 % isotropic source depth
-z0 = 1/mus;
+z0 = 1/musp;
 
 % diffusion coefficient
-D = 1/(3*mus);
+D = 1/(3*musp);
 
 % extrapolated distance
 ze = 2*A*D;
 
 % insert here the core of the calculation
+mu = 1./(4*D*v*time);
+z_3 = - z0 ;       %contributo positivo
+z_4 = 2*ze + z0 ;   %contributo negativo
+tpsf =  z_3*exp(-mu*z_3.^2) - z_4*exp(-mu*z_4.^2);
+tpsf = -exp(-mua*v*time-mu*rho^2)./(2*(4*pi*D*v)^(1.5)*(time.^(2.5))).*tpsf;
 
-end
 
